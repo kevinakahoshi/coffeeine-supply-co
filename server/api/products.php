@@ -3,9 +3,7 @@
 if ($request['method'] === 'GET') {
   $link = get_db_link();
   $message = check_connection($link);
-  $response['body'] = [
-    'message' => $message
-  ];
+  $response['body'] = $message;
   send($response);
 }
 
