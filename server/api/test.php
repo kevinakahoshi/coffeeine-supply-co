@@ -1,13 +1,7 @@
 <?php
 
-$response['body'] = [
-  "message" => "This is a test"
-];
+if (empty($request['body'])) {
+  throw new ApiError('You are not allowed', 403);
+}
 
 send($response);
-
-// if (empty($request['body'])) {
-//   throw new ApiError('You are not allowed', 403);
-// }
-
-// send($response);
