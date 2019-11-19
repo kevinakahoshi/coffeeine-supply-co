@@ -7,7 +7,7 @@ function ProductListItem(props) {
   const shortDescription = props.product.shortDescription;
   return (
     <div className="col-md-4 d-flex align-items-stretch p-0">
-      <div className="card mb-4">
+      <div className="card mb-4 shadow-sm">
         <img src={image} alt="" className="card-img-top object-fit"/>
         <div className="card-body">
           <h5 className="card-title">{name}</h5>

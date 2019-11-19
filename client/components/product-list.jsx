@@ -27,14 +27,16 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="row card-deck">
-        {
-          this.state.products.map(product =>
-            <ProductListItem
-              key={this.state.products.productId}
-              product={product} />
-          )
-        }
+      <div className="container">
+        <div className="row d-flex card-deck">
+          {
+            this.state.products.map(product =>
+              <ProductListItem
+                key={this.state.products.productId}
+                product={product} />
+            )
+          }
+        </div>
       </div>
     );
   }

@@ -6,8 +6,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <Header />
+      <div>
+        <Header name="WickedSales" />
         <ProductList />
       </div>
     );
