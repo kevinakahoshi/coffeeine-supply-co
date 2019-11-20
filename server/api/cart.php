@@ -1,3 +1,5 @@
 <?php
 
-if ($request['method'] === 'GET')
+if ($request['method'] === 'GET') {
+  return null;
+}
