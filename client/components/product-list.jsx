@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
-import ProductDetails from './product-details';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -34,12 +33,9 @@ class ProductList extends React.Component {
             this.state.products.map(product =>
               <ProductListItem
                 key={product.productId}
-                product={product} onClick={() => {
-                  this.setView('details', { productId: product.productId });
-                }}/>
+                product={product} setView={this.props.setView} />
             )
           }
-          <ProductDetails />
         </div>
       </div>
     );

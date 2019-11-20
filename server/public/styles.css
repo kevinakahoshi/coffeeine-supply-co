@@ -1,4 +1,13 @@
-.object-fit {
+.object-fit-card {
   object-fit: contain;
   height: 250px;
+}
+
+.object-fit-details {
+  object-fit: contain;
+  height: 400px;
+}
+
+.pointer {
+  cursor: pointer;
 }

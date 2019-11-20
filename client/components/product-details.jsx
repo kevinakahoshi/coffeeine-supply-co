@@ -4,42 +4,45 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: 1,
-      resultObj: null
+      product: null
     };
   }
 
   componentDidMount() {
-    const request = `/api/products?productId=${this.state.product}`;
+    const request = `/api/products?productId=${this.props.id.productId}`;
     const initObj = {
       method: 'GET'
     };
     fetch(request, initObj)
       .then(response => { return response.json(); })
-      .then(result => {
-        this.setState({ resultObj: result[0] });
-      });
+      .then(result => { this.setState({ product: result[0] }); })
+      .catch(error => console.error('There was an error', error.message));
   }
 
   render() {
+    if (this.state.product === null) {
+      return null;
+    }
     return (
       <div className="container my-5">
         <div className="container py-3 bg-white border rounded shadow-sm" id="product-details">
           <div className="mb-3">
-            <a href="#" className="mb-3"><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
+            <a href="#" className="mb-3" onClick={() => {
+              this.props.setView('catalog', {});
+            }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
           </div>
-          <div className="row">
+          <div className="row mb-3">
             <div className="col-md-5">
-              <img src="/images/shake-weight.jpg" alt="" className="w-100" />
+              <img src={this.state.product.image} alt="" className="w-100 object-fit-details" />
             </div>
             <div className="col-md-7">
-              <h3>Product Name</h3>
-              <h4 className="text-black-50">$Product Price</h4>
-              <p>Product Short Description</p>
+              <h3>{this.state.product.name}</h3>
+              <h4 className="text-black-50">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
+              <p>{this.state.product.shortDescription}</p>
             </div>
           </div>
-          <div className="col-md-12">
-            <p>Product Long Description</p>
+          <div>
+            <p>{this.state.product.longDescription}</p>
           </div>
         </div>
       </div>
