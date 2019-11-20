@@ -7,8 +7,8 @@ switch ($request['path']) {
     readfile('index.html');
     exit;
   case '/api/test':
-  case '/api/products':
   case '/api/cart':
+  case '/api/products':
   case '/api/health-check':
     require_once "..${request['path']}.php";
   default:
