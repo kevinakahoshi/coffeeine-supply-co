@@ -1,10 +1,6 @@
 <?php
 $link = get_db_link();
 
-function sendQuery($sql) {
-  return $link->query($sql);
-}
-
 if ($request['method'] === 'GET') {
   $sessionSetCheck = isset($_SESSION['cart_id']);
   if (!$sessionSetCheck) {
