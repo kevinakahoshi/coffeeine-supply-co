@@ -11,3 +11,8 @@
 .pointer {
   cursor: pointer;
 }
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
