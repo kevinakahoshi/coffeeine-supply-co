@@ -16,10 +16,11 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
+    const orderTotal = this.props.calculateTotal();
     return (
       <div className="container mb-5">
         <h1>My Cart</h1>
-        <h3 className="text-black-50">Order Total: $</h3>
+        <h3 className="text-black-50">Order Total: ${orderTotal}</h3>
         <form action="">
           <div className="form-group">
             <label htmlFor="Name">Name</label>

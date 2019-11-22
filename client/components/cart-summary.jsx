@@ -2,15 +2,8 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 function CartSummary(props) {
-  const itemsArray = props.cartItems;
-  let itemTotal = 0;
-
-  for (let cartIndex = 0; cartIndex < itemsArray.length; cartIndex++) {
-    itemTotal = itemTotal + itemsArray[cartIndex].price;
-  }
-  itemTotal = (itemTotal / 100).toFixed(2);
-
-  if (itemsArray.length === 0) {
+  const itemTotal = props.calculateTotal();
+  if (props.cartItems.length === 0) {
     return (
       <div className="container">
         <div className="mb-3">
@@ -32,7 +25,7 @@ function CartSummary(props) {
         </div>
         <h1>My Cart</h1>
         {
-          itemsArray.map(product =>
+          props.cartItems.map(product =>
             <CartSummaryItem product={product} key={product.id} />
           )
         }
