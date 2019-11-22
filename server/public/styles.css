@@ -16,3 +16,7 @@ img {
   width: 100%;
   object-fit: contain;
 }
+
+textarea {
+  resize: none;
+}

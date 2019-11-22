@@ -36,7 +36,10 @@ function CartSummary(props) {
             <CartSummaryItem product={product} key={product.id} />
           )
         }
-        <h3>Item Total: ${itemTotal}</h3>
+        <h3 className="d-inline-block text-black-50">Item Total: ${itemTotal}</h3>
+        <button className="btn btn-primary float-right" onClick={() => {
+          props.setView('checkout', {});
+        }}>Proceed to Checkout</button>
       </div>
     );
   }

@@ -58,7 +58,7 @@ if ($request['method'] === 'POST') {
     $cart_query = $link->query($cart_items);
     $cart_item_id = $link->insert_id;
     $cart_info = mysqli_fetch_assoc($cart_query);
-    $joined_cart = "SELECT cartItems.cartItemId
+    $joined_cart = "SELECT cartItems.cartId
                     AS id, cartItems.productId, products.name, products.price, products.image, products.shortDescription
                     FROM cartItems
                     JOIN products
