@@ -1,25 +1,23 @@
-# wicked-sales
+# Coffeeine Supply Co
 
-> - Maintained by: `thebearingedge`
+Formerly known as Wicked Sales.  Will be re-themed soon.  Full-stack e-commerce experience for coffee and coffee supplies.
 
-A full stack LAMP & React shopping cart app.
+# Technologies Used
+- React.js
+- Webpack 4
+- Bootstrap 4
+- MySQL
+- HTML5
+- CSS3
+- PHP
+- AWS EC2
 
-## Introduction
+# Live Demo
+Link: Coming Soon
 
-For this project, you will be building a single-page React application and a dynamic PHP API.
-
-## Getting Started
-
-1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
-2. Check out a `dev` branch and push it to `origin`.
-    ```
-    git push origin dev
-    ```
-3. Install all dependencies in `package.json` with NPM.
-    ```
-    npm install
-    ```
-
-## Instructions
-
-There are instructions and Issue Template snippets located in the `features` directory of [the instructions for this project](https://github.com/Learning-Fuze/wicked-sales-instructions).
+# Features
+- User can view list of all products
+- User can view details of all products
+- User can add products to their cart
+- User can get to the checkout page
+- User can enter their purchase information
