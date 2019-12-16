@@ -1,0 +1,22 @@
+.object-fit-card {
+  object-fit: contain;
+  height: 250px;
+}
+
+.object-fit-details {
+  object-fit: contain;
+  height: 400px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
+
+textarea {
+  resize: none;
+}
