@@ -1,5 +1,4 @@
 # Coffeeine Supply Co
-
 Formerly known as Wicked Sales.  Will be re-themed soon.  Full-stack e-commerce experience for coffee and coffee supplies.
 
 # Technologies Used
