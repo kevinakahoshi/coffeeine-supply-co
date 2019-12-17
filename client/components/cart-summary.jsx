@@ -8,7 +8,7 @@ function CartSummary(props) {
       <div className="container">
         <div className="mb-3">
           <a href="#" className="mb-3" onClick={() => {
-            this.props.setView('catalog', {});
+            props.setView('catalog', {});
           }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
         </div>
         <h1>My Cart</h1>

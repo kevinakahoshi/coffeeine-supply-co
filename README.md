@@ -20,3 +20,5 @@ Link: Coming Soon
 - User can add products to their cart
 - User can get to the checkout page
 - User can enter their purchase information
+
+# Preview
