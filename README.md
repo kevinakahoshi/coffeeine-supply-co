@@ -20,3 +20,6 @@ Link: Coming Soon
 - User can add products to their cart
 - User can get to the checkout page
 - User can enter their purchase information
+
+# Preview
+![Home](https://user-images.githubusercontent.com/53406674/70953748-3e542b80-201f-11ea-9022-9316688aadca.png)
