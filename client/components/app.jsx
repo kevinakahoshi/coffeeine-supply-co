@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       }
     };
@@ -106,28 +106,28 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Header name="Coffeeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
+          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
           <ProductList setView={this.setView} />
         </div>
       );
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <Header name="Coffeeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
+          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
           <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} />
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Header name="Coffeeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
+          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
           <CheckoutForm setView={this.setView} cartItems={this.state.cart} placeOrder={this.placeOrder} calculateTotal={this.calculateTotal} />
         </div>
       );
     } else {
       return (
         <div>
-          <Header name="Coffeeine Supply Co" setView={this.setView} cartItems={this.state.cart}/>
+          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart}/>
           <ProductDetails id={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
         </div>
       );
