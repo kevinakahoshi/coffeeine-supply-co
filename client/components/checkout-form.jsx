@@ -41,7 +41,7 @@ class CheckoutForm extends React.Component {
       validation = 'is-invalid';
     }
     return (
-      <div className="container mb-5">
+      <div className="container my-5">
         <h1>My Cart</h1>
         <h3 className="text-black-50">Order Total: ${orderTotal}</h3>
         <form action=""
