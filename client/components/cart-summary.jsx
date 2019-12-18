@@ -17,7 +17,7 @@ function CartSummary(props) {
     );
   } else {
     return (
-      <div className="container mb-5">
+      <div className="container my-5">
         <div className="mb-3">
           <a href="#" className="mb-3" onClick={() => {
             props.setView('catalog', {});

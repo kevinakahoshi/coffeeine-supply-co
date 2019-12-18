@@ -27,17 +27,25 @@ class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row d-flex card-deck">
-          {
-            this.state.products.map(product =>
-              <ProductListItem
-                key={product.productId}
-                product={product} setView={this.props.setView} />
-            )
-          }
+      <>
+        <div className="row mb-5 catalog-hero d-flex">
+          <div className="container m-auto">
+            <h1 className="text-center text-white">Coffeine Supply Company</h1>
+            <h3 className="text-center text-white">A coffee depot for kindred souls.</h3>
+          </div>
         </div>
-      </div>
+        <div className="container">
+          <div className="row d-flex card-deck">
+            {
+              this.state.products.map(product =>
+                <ProductListItem
+                  key={product.productId}
+                  product={product} setView={this.props.setView} />
+              )
+            }
+          </div>
+        </div>
+      </>
     );
   }
 }

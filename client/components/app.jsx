@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import Footer from './footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -103,34 +104,28 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.view.name === 'catalog') {
-      return (
-        <div>
-          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
-          <ProductList setView={this.setView} />
-        </div>
-      );
-    } else if (this.state.view.name === 'cart') {
-      return (
-        <div>
-          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
-          <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} />
-        </div>
-      );
-    } else if (this.state.view.name === 'checkout') {
-      return (
-        <div>
-          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
-          <CheckoutForm setView={this.setView} cartItems={this.state.cart} placeOrder={this.placeOrder} calculateTotal={this.calculateTotal} />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart}/>
-          <ProductDetails id={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>
-        </div>
-      );
+    let view = null;
+    switch (this.state.view.name) {
+      case 'catalog':
+        view = <ProductList setView={this.setView} />;
+        break;
+      case 'cart':
+        view = <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} />;
+        break;
+      case 'checkout':
+        view = <CheckoutForm setView={this.setView} cartItems={this.state.cart} placeOrder={this.placeOrder} calculateTotal={this.calculateTotal} />;
+        break;
+      default:
+        view = <ProductDetails id={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+        break;
     }
+
+    return (
+      <>
+        <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
+        {view}
+        <Footer />
+      </>
+    );
   }
 }

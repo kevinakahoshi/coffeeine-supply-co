@@ -5,9 +5,12 @@ function Header(props) {
   const itemCount = props.cartItems.length;
   const cartCallback = props.setView;
   return (
-    <div className="bg-dark mb-5 p-3">
+    <div className="bg-dark p-3">
       <div className="container">
-        <h5 className="text-light d-inline-block m-0"><i className="fas fa-mug-hot" /> {name}</h5>
+        <h5 className="text-light d-inline-block m-0 logo" onClick={() => {
+          cartCallback('catalog', {});
+        }}>
+          <i className="fas fa-mug-hot" /> {name}</h5>
         <p className="text-light d-inline-block float-right m-0 pointer" onClick={() => {
           cartCallback('cart', {});
         }}>{itemCount} Items <i className="fas fa-shopping-cart"></i></p>
