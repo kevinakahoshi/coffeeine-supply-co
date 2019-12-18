@@ -5,7 +5,7 @@ function CartSummary(props) {
   const itemTotal = props.calculateTotal();
   if (props.cartItems.length === 0) {
     return (
-      <div className="container">
+      <div className="container py-5">
         <div className="mb-3">
           <a href="#" className="mb-3" onClick={() => {
             props.setView('catalog', {});
@@ -26,7 +26,7 @@ function CartSummary(props) {
         <h1>My Cart</h1>
         {
           props.cartItems.map(product =>
-            <CartSummaryItem product={product} key={product.id} />
+            <CartSummaryItem product={product} key={product.id} removeFromCart={props.removeFromCart} />
           )
         }
         <div className="d-md-flex justify-content-between">

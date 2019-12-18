@@ -20,7 +20,7 @@ if ($request['method'] === 'POST') {
   }
 
   $new_checkout = "INSERT INTO orders (cartId, name, creditCard, shippingAddress)
-                   VALUES (?, ?, ?, ?)";
+                        VALUES (?, ?, ?, ?)";
   $prepared_checkout = $link->prepare($new_checkout);
   $bound_checkout = $prepared_checkout->bind_param('isss', $_SESSION['cart_id'], $request['body']['name'], $request['body']['creditCard'], $request['body']['shippingAddress']);
   $place_order = $prepared_checkout->execute();
