@@ -5,7 +5,7 @@ function Header(props) {
   const itemCount = props.cartItems.length;
   const cartCallback = props.setView;
   return (
-    <div className="bg-dark p-3">
+    <div className="bg-dark py-3">
       <div className="container">
         <h5 className="text-light d-inline-block m-0 logo" onClick={() => {
           cartCallback('catalog', {});

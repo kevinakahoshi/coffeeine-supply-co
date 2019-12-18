@@ -41,7 +41,12 @@ class CheckoutForm extends React.Component {
       validation = 'is-invalid';
     }
     return (
-      <div className="container my-5">
+      <div className="container py-5">
+        <div className="mb-3">
+          <a href="#" onClick={() => {
+            this.props.setView('catalog', {});
+          }}><i className="fas fa-chevron-circle-left" /> Continue Shopping</a>
+        </div>
         <h1>My Cart</h1>
         <h3 className="text-black-50">Order Total: ${orderTotal}</h3>
         <form action=""
@@ -88,9 +93,6 @@ class CheckoutForm extends React.Component {
               onChange={event => this.handleChange(event.target.value)} />
             <div className="invalid-feedback">No address present.  Please enter a valid address.</div>
           </div>
-          <a href="#" className="mb-3" onClick={() => {
-            this.props.setView('catalog', {});
-          }}><i className="fas fa-chevron-circle-left"></i> Continue Shopping</a>
           <button className="btn btn-primary float-right" type="submit">Submit Order</button>
         </form>
       </div>

@@ -17,7 +17,7 @@ function CartSummary(props) {
     );
   } else {
     return (
-      <div className="container my-5">
+      <div className="container py-5">
         <div className="mb-3">
           <a href="#" className="mb-3" onClick={() => {
             props.setView('catalog', {});
@@ -29,10 +29,12 @@ function CartSummary(props) {
             <CartSummaryItem product={product} key={product.id} />
           )
         }
-        <h3 className="d-inline-block text-black-50">Item Total: ${itemTotal}</h3>
-        <button className="btn btn-primary float-right" onClick={() => {
-          props.setView('checkout', {});
-        }}>Proceed to Checkout</button>
+        <div className="d-md-flex justify-content-between">
+          <h3 className="md-my-auto text-black-50">Item Total: ${itemTotal}</h3>
+          <button className="btn btn-primary my-auto" onClick={() => {
+            props.setView('checkout', {});
+          }}>Proceed to Checkout</button>
+        </div>
       </div>
     );
   }

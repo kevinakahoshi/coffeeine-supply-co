@@ -44,19 +44,10 @@ export default class App extends React.Component {
 
   getCartItems() {
     const request = '/api/cart';
-    const initObj = {
-      method: 'GET'
-    };
-    fetch(request, initObj)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({ cart: data });
-      })
-      .catch(error => {
-        console.error('There was an error:', error.message);
-      });
+    fetch(request)
+      .then(response => response.json())
+      .then(data => this.setState({ cart: data }))
+      .catch(error => console.error('There was an error:', error.message));
   }
 
   addToCart(product) {
@@ -69,15 +60,24 @@ export default class App extends React.Component {
       }
     };
     fetch(request, initObj)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({ cart: this.state.cart.concat(data) });
-      })
-      .catch(error => {
-        console.error('There was an error:', error.message);
-      });
+      .then(response => response.json())
+      .then(data => this.setState({ cart: this.state.cart.concat(data) }))
+      .catch(error => console.error('There was an error:', error.message));
+  }
+
+  removeFromCart() {
+    const request = '/api/cart';
+    const initObj = {
+      method: 'POST',
+      body: JSON.stringify(),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
+    fetch(request, initObj)
+      .then(response => response.json())
+      .then(data => this.setState({ cart: this.state.cart }))
+      .catch(error => console.error('Error with Removing From Cart:', error.message));
   }
 
   placeOrder(order) {
@@ -96,7 +96,7 @@ export default class App extends React.Component {
         this.setState({ cart: [] });
         this.setView('catalog', {});
       })
-      .catch(error => console.error('There was an error', error));
+      .catch(error => console.error('There was an error:', error.message));
   }
 
   componentDidMount() {
