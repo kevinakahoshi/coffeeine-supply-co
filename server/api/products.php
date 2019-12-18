@@ -16,7 +16,9 @@ function check_connection($link, $request) {
     $sqlQuery = 'SELECT productId, name, price, image, shortDescription FROM products';
   } else if ($isSet) {
     if ($isNumeric && $productId > 0) {
-      $sqlQuery = "SELECT * FROM products WHERE productId=$productId";
+      $sqlQuery = "SELECT *
+                     FROM products
+                    WHERE productId=$productId";
     } else {
       throw new ApiError('Product ID is not valid', 400);
     }

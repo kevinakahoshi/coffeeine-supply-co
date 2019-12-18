@@ -7,7 +7,8 @@ function CartSummaryItem(props) {
   const description = props.product.shortDescription;
   return (
     <div className="container mb-3">
-      <div className="row border bg-white shadow-sm rounded p-3">
+      <div className="row border bg-white shadow-sm rounded p-3 position-relative">
+        <i className="far fa-times-circle cancel-button position-absolute" onClick={() => props.removeFromCart(props.product.id)}></i>
         <div className="col-md-4">
           <img src={image} alt="" className="object-fit-card" />
         </div>

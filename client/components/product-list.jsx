@@ -30,8 +30,8 @@ class ProductList extends React.Component {
       <>
         <div className="catalog-hero d-flex">
           <div className="container m-auto">
-            <h1 className="text-center text-white">Coffeine Supply Co</h1>
-            <h3 className="text-center text-white">A coffee depot for kindred souls.</h3>
+            <h1 className="text-center text-white h2">Coffeine Supply Co</h1>
+            <h3 className="text-center text-white h4">A coffee depot for kindred souls.</h3>
           </div>
         </div>
         <div className="container py-5">

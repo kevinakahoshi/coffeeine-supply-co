@@ -40,6 +40,18 @@ textarea {
   resize: none;
 }
 
+.cancel-button {
+  font-size: 2rem;
+  transition: .3s all;
+  color: #ccc;
+  cursor: pointer;
+  right: 1rem;
+}
+
+.cancel-button:hover {
+  color: #000;
+}
+
 @keyframes fade-in {
   0% { opacity: 0; }
   100% { opacity: 1; }

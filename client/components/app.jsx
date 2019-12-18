@@ -19,6 +19,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
   }
@@ -44,19 +45,10 @@ export default class App extends React.Component {
 
   getCartItems() {
     const request = '/api/cart';
-    const initObj = {
-      method: 'GET'
-    };
-    fetch(request, initObj)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({ cart: data });
-      })
-      .catch(error => {
-        console.error('There was an error:', error.message);
-      });
+    fetch(request)
+      .then(response => response.json())
+      .then(data => this.setState({ cart: data }))
+      .catch(error => console.error('There was an error:', error.message));
   }
 
   addToCart(product) {
@@ -69,15 +61,24 @@ export default class App extends React.Component {
       }
     };
     fetch(request, initObj)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        this.setState({ cart: this.state.cart.concat(data) });
-      })
-      .catch(error => {
-        console.error('There was an error:', error.message);
-      });
+      .then(response => response.json())
+      .then(data => this.setState({ cart: this.state.cart.concat(data) }))
+      .catch(error => console.error('There was an error:', error.message));
+  }
+
+  removeFromCart(cartItemId) {
+    const request = '/api/cart';
+    const initObj = {
+      method: 'DELETE',
+      body: JSON.stringify({ cartItemId }),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
+    fetch(request, initObj)
+      .then(response => response.json())
+      .then(this.getCartItems())
+      .catch(error => console.error('Error with Removing From Cart:', error.message));
   }
 
   placeOrder(order) {
@@ -96,7 +97,7 @@ export default class App extends React.Component {
         this.setState({ cart: [] });
         this.setView('catalog', {});
       })
-      .catch(error => console.error('There was an error', error));
+      .catch(error => console.error('There was an error:', error.message));
   }
 
   componentDidMount() {
@@ -110,7 +111,7 @@ export default class App extends React.Component {
         view = <ProductList setView={this.setView} />;
         break;
       case 'cart':
-        view = <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} />;
+        view = <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} removeFromCart={this.removeFromCart}/>;
         break;
       case 'checkout':
         view = <CheckoutForm setView={this.setView} cartItems={this.state.cart} placeOrder={this.placeOrder} calculateTotal={this.calculateTotal} />;
