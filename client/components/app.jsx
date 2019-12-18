@@ -123,7 +123,9 @@ export default class App extends React.Component {
     return (
       <>
         <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
-        {view}
+        <div className="content-div">
+          {view}
+        </div>
         <Footer />
       </>
     );

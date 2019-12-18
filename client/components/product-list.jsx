@@ -28,13 +28,13 @@ class ProductList extends React.Component {
   render() {
     return (
       <>
-        <div className="mb-5 catalog-hero d-flex">
+        <div className="catalog-hero d-flex">
           <div className="container m-auto">
-            <h1 className="text-center text-white">Coffeine Supply Company</h1>
+            <h1 className="text-center text-white">Coffeine Supply Co</h1>
             <h3 className="text-center text-white">A coffee depot for kindred souls.</h3>
           </div>
         </div>
-        <div className="container">
+        <div className="container py-5">
           <div className="d-flex card-deck">
             {
               this.state.products.map(product =>

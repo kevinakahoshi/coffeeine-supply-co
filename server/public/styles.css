@@ -13,6 +13,10 @@
   min-height: 60vh;
 }
 
+.content-div {
+  min-height: 75vh;
+}
+
 .object-fit-card {
   object-fit: contain;
   height: 250px;
