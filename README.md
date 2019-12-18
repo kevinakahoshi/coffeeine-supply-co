@@ -12,7 +12,7 @@ Formerly known as Wicked Sales.  Will be re-themed soon.  Full-stack e-commerce 
 - AWS EC2
 
 # Live Demo
-Link: Coming Soon
+Link: https://coffeine.kevinakahoshi.com/
 
 # Features
 - User can view list of all products
