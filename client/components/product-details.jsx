@@ -9,6 +9,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const request = `/api/products?productId=${this.props.id.productId}`;
     const initObj = {
       method: 'GET'

@@ -23,6 +23,10 @@ class CartSummary extends React.Component {
     this.setState({ productToRemove: cartItem });
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const itemTotal = this.props.calculateTotal();
 

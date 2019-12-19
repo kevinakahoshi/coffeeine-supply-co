@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'catalog',
+        name: 'cart',
         params: {}
       }
     };
@@ -62,7 +62,7 @@ export default class App extends React.Component {
     };
     fetch(request, initObj)
       .then(response => response.json())
-      .then(data => this.setState({ cart: this.state.cart.concat(data) }))
+      .then(this.getCartItems())
       .catch(error => console.error('There was an error:', error.message));
   }
 
