@@ -35,7 +35,8 @@ class CartSummary extends React.Component {
         removeFromCart={this.props.removeFromCart}
         toggleModal={this.toggleModal}
         showModal={this.state.showModal}
-        productToRemove={this.productToRemove}/>;
+        productToRemove={this.productToRemove}
+        sendToCart={this.props.sendToCart}/>;
     });
 
     if (this.props.cartItems.length === 0) {

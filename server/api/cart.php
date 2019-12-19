@@ -21,6 +21,7 @@ if ($request['method'] === 'GET') {
 
 if ($request['method'] === 'POST') {
   $product_id = $request['body']['productId'];
+  $operator = $request['body']['operator'];
   $check_product_id = isset($product_id);
   if (!$check_product_id) {
     throw new ApiError('That is not a valid product ID', 400);
@@ -43,7 +44,7 @@ if ($request['method'] === 'POST') {
     $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
                         VALUES ($cart_id, $product_id, $product_price, $quantity)
                             ON DUPLICATE
-                    KEY UPDATE quantity = quantity + 1";
+                    KEY UPDATE quantity = quantity $operator 1";
     $cart_query = $link->query($cart_items);
     $cart_item_id = $link->insert_id;
     $cart_info = mysqli_fetch_assoc($cart_query);
@@ -66,7 +67,7 @@ if ($request['method'] === 'POST') {
     $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
                         VALUES ($cart_id, $product_id, $product_price, $quantity)
                             ON DUPLICATE
-                    KEY UPDATE quantity = quantity + 1";
+                    KEY UPDATE quantity = quantity $operator 1";
     $cart_query = $link->query($cart_items);
     $cart_item_id = $link->insert_id;
     $cart_info = mysqli_fetch_assoc($cart_query);

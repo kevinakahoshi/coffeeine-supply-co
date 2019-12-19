@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
               <h4 className="text-black-50">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
               <p>{this.state.product.shortDescription}</p>
               <button className="btn btn-primary" onClick={() => {
-                this.props.addToCart(this.props.id);
+                this.props.sendToCart(this.state.product.productId, '+');
               }}>Add to Cart</button>
             </div>
           </div>

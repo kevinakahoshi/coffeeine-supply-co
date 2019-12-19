@@ -9,9 +9,7 @@ function ProductListItem(props) {
   return (
     <div className="col-md-4 d-flex align-items-stretch p-0">
       <div className="card mb-4 pointer item-card" onClick={() => {
-        setView('details', {
-          productId: props.product.productId
-        });
+        setView('details', { productId: props.product.productId });
       }}>
         <img src={image} alt="" className="card-img-top object-fit-card"/>
         <div className="card-body">
