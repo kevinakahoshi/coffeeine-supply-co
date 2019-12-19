@@ -14,7 +14,17 @@
 }
 
 .content-div {
-  min-height: 75vh;
+  min-height: 77.5vh;
+}
+
+.item-card {
+  transition: .3s all;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem .75rem rgba(0, 0, 0, .075);
 }
 
 .object-fit-card {
@@ -38,6 +48,17 @@ img {
 
 textarea {
   resize: none;
+}
+
+.overlay {
+  background: #00000040;
+  top: 0;
+  left: 0;
+}
+
+.modal-message {
+  max-width: 450px;
+  margin: 10% auto auto auto;
 }
 
 .cancel-button {

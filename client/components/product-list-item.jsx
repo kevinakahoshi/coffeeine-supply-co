@@ -8,7 +8,7 @@ function ProductListItem(props) {
   const setView = props.setView;
   return (
     <div className="col-md-4 d-flex align-items-stretch p-0">
-      <div className="card mb-4 shadow-sm pointer" onClick={() => {
+      <div className="card mb-4 pointer item-card" onClick={() => {
         setView('details', {
           productId: props.product.productId
         });
