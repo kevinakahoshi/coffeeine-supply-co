@@ -24,7 +24,7 @@ class ProductDetails extends React.Component {
       return null;
     }
     return (
-      <div className="container my-5">
+      <div className="container py-5">
         <div className="container py-3 bg-white border rounded shadow-sm" id="product-details">
           <div className="mb-3">
             <a href="#" className="mb-3" onClick={() => {
