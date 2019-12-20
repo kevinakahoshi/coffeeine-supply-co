@@ -52,7 +52,7 @@ export default class App extends React.Component {
   }
 
   sendToCart(productId, operator) {
-    const bodyObject = { productId: productId, operator: operator };
+    const bodyObject = { productId, operator };
     const request = '/api/cart';
     const initObj = {
       method: 'POST',

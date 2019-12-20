@@ -32,8 +32,8 @@ function CartSummaryItem(props) {
                     if (props.product.quantity > 1) {
                       props.sendToCart(props.product.productId, '-');
                     } else {
-                      props.toggleModal();
                       props.productToRemove(props.product);
+                      props.toggleModal();
                     }
                   }}>
                   <i className="fas fa-minus m-auto" />
