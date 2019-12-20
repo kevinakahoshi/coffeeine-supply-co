@@ -37,7 +37,7 @@ export default class App extends React.Component {
     const itemsArray = this.state.cart;
     let itemTotal = 0;
     for (let cartIndex = 0; cartIndex < itemsArray.length; cartIndex++) {
-      itemTotal = itemTotal + itemsArray[cartIndex].price;
+      itemTotal += (itemsArray[cartIndex].price * itemsArray[cartIndex].quantity);
     }
     itemTotal = (itemTotal / 100).toFixed(2);
     return itemTotal;
@@ -52,7 +52,7 @@ export default class App extends React.Component {
   }
 
   sendToCart(productId, operator) {
-    const bodyObject = { productId: productId, operator: operator };
+    const bodyObject = { productId, operator };
     const request = '/api/cart';
     const initObj = {
       method: 'POST',

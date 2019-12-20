@@ -28,7 +28,14 @@ function CartSummaryItem(props) {
             <div className="d-flex btn-group mx-3 my-auto border border-dark rounded">
               <div className="d-flex">
                 <button className="btn btn-light rounded-right"
-                  onClick={() => { props.sendToCart(props.product.productId, '-'); }}>
+                  onClick={() => {
+                    if (props.product.quantity > 1) {
+                      props.sendToCart(props.product.productId, '-');
+                    } else {
+                      props.productToRemove(props.product);
+                      props.toggleModal();
+                    }
+                  }}>
                   <i className="fas fa-minus m-auto" />
                 </button>
               </div>

@@ -31,7 +31,8 @@ class CartSummary extends React.Component {
     const itemTotal = this.props.calculateTotal();
 
     const products = this.props.cartItems.map(product => {
-      return <CartSummaryItem product={product} key={product.id}
+      return <CartSummaryItem product={product}
+        key={product.id}
         removeFromCart={this.props.removeFromCart}
         toggleModal={this.toggleModal}
         showModal={this.state.showModal}
@@ -45,7 +46,7 @@ class CartSummary extends React.Component {
           <div className="mb-3">
             <a href="#" className="mb-3" onClick={() => {
               this.props.setView('catalog', {});
-            }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
+            }}><i className="fas fa-chevron-circle-left" /> Back to Catalog</a>
           </div>
           <h1>My Cart</h1>
           <h3>There are no items in your cart</h3>
@@ -57,7 +58,8 @@ class CartSummary extends React.Component {
           <div className="mb-3">
             <a href="#" className="mb-3" onClick={() => {
               this.props.setView('catalog', {});
-            }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
+            }}>
+              <i className="fas fa-chevron-circle-left" /> Back to Catalog</a>
           </div>
           <h1>My Cart</h1>
           {products}

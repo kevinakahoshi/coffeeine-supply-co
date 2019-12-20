@@ -32,17 +32,13 @@ if ($request['method'] === 'POST') {
   $product_query = $link->query($select_product);
   $product_info = mysqli_fetch_assoc($product_query);
   $product_price = $product_info['price'];
-  $quantity = 1;
   if (!isset($_SESSION['cart_id'])) {
     $inserted_time = "INSERT INTO carts (createdAt)
                       VALUES (CURRENT_TIMESTAMP)";
     $time_query = $link->query($inserted_time);
     $cart_id = $link->insert_id;
-    // $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
-    //                VALUES ($cart_id, $product_id, $product_price, $quantity)";
-
     $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
-                        VALUES ($cart_id, $product_id, $product_price, $quantity)
+                        VALUES ($cart_id, $product_id, $product_price, 1)
                             ON DUPLICATE
                     KEY UPDATE quantity = quantity $operator 1";
     $cart_query = $link->query($cart_items);
@@ -61,11 +57,8 @@ if ($request['method'] === 'POST') {
     send($response);
   } else {
     $cart_id = $_SESSION['cart_id'];
-    // $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
-    //                VALUES ($cart_id, $product_id, $product_price, $quantity)";
-
     $cart_items = "INSERT INTO cartItems (cartId, productId, price, quantity)
-                        VALUES ($cart_id, $product_id, $product_price, $quantity)
+                        VALUES ($cart_id, $product_id, $product_price, 1)
                             ON DUPLICATE
                     KEY UPDATE quantity = quantity $operator 1";
     $cart_query = $link->query($cart_items);
