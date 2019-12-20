@@ -1,5 +1,22 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Ubuntu',
+  sans-serif;
+}
+
 * {
   animation: fade-in .75s;
+}
+
+a {
+  transition: .3s all;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .logo {
@@ -58,7 +75,7 @@ textarea {
 
 .modal-message {
   max-width: 450px;
-  margin: 10% auto auto auto;
+  margin: auto;
 }
 
 .cancel-button {

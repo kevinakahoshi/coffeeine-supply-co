@@ -12,13 +12,13 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'catalog',
+        name: 'cart',
         params: {}
       }
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+    this.sendToCart = this.sendToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
@@ -51,18 +51,22 @@ export default class App extends React.Component {
       .catch(error => console.error('There was an error:', error.message));
   }
 
-  addToCart(product) {
+  sendToCart(productId, operator) {
+    const bodyObject = { productId: productId, operator: operator };
     const request = '/api/cart';
     const initObj = {
       method: 'POST',
-      body: JSON.stringify(product),
+      body: JSON.stringify(bodyObject),
       headers: {
         'Content-type': 'application/json'
       }
     };
     fetch(request, initObj)
       .then(response => response.json())
-      .then(data => this.setState({ cart: this.state.cart.concat(data) }))
+      .then(() => {
+        this.getCartItems();
+        this.setState();
+      })
       .catch(error => console.error('There was an error:', error.message));
   }
 
@@ -77,7 +81,10 @@ export default class App extends React.Component {
     };
     fetch(request, initObj)
       .then(response => response.json())
-      .then(this.getCartItems())
+      .then(() => {
+        this.getCartItems();
+        this.setState();
+      })
       .catch(error => console.error('Error with Removing From Cart:', error.message));
   }
 
@@ -111,19 +118,31 @@ export default class App extends React.Component {
         view = <ProductList setView={this.setView} />;
         break;
       case 'cart':
-        view = <CartSummary setView={this.setView} cartItems={this.state.cart} calculateTotal={this.calculateTotal} removeFromCart={this.removeFromCart}/>;
+        view = <CartSummary setView={this.setView}
+          cartItems={this.state.cart}
+          calculateTotal={this.calculateTotal}
+          removeFromCart={this.removeFromCart}
+          sendToCart={this.sendToCart}
+        />;
         break;
       case 'checkout':
-        view = <CheckoutForm setView={this.setView} cartItems={this.state.cart} placeOrder={this.placeOrder} calculateTotal={this.calculateTotal} />;
+        view = <CheckoutForm setView={this.setView}
+          cartItems={this.state.cart}
+          placeOrder={this.placeOrder}
+          calculateTotal={this.calculateTotal} />;
         break;
       default:
-        view = <ProductDetails id={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+        view = <ProductDetails id={this.state.view.params}
+          setView={this.setView}
+          sendToCart={this.sendToCart} />;
         break;
     }
 
     return (
       <>
-        <Header name="Coffeine Supply Co" setView={this.setView} cartItems={this.state.cart} />
+        <Header name="Coffeine Supply Co"
+          setView={this.setView}
+          cartItems={this.state.cart} />
         <div className="content-div">
           {view}
         </div>

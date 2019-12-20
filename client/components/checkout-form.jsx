@@ -34,6 +34,10 @@ class CheckoutForm extends React.Component {
     }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const orderTotal = this.props.calculateTotal();
     let validation = null;
@@ -93,7 +97,10 @@ class CheckoutForm extends React.Component {
               onChange={event => this.handleChange(event.target.value)} />
             <div className="invalid-feedback">No address present.  Please enter a valid address.</div>
           </div>
-          <button className="btn btn-primary float-right" type="submit">Submit Order</button>
+          <div className="d-flex justify-content-end">
+            <button className="btn btn-primary"
+              type="submit">Submit Order</button>
+          </div>
         </form>
       </div>
     );
