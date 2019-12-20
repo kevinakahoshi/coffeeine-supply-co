@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'cart',
+        name: 'catalog',
         params: {}
       }
     };
@@ -37,7 +37,7 @@ export default class App extends React.Component {
     const itemsArray = this.state.cart;
     let itemTotal = 0;
     for (let cartIndex = 0; cartIndex < itemsArray.length; cartIndex++) {
-      itemTotal = itemTotal + itemsArray[cartIndex].price;
+      itemTotal += (itemsArray[cartIndex].price * itemsArray[cartIndex].quantity);
     }
     itemTotal = (itemTotal / 100).toFixed(2);
     return itemTotal;
