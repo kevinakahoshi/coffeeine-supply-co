@@ -53,7 +53,7 @@ class CheckoutForm extends React.Component {
           }}><i className="fas fa-chevron-circle-left" /> Continue Shopping</a>
         </div>
         <h1>My Cart</h1>
-        <h3 className="text-black-50">Order Total: ${orderTotal}</h3>
+        <h3 className="text-black-50 mb-3">Order Total: ${orderTotal}</h3>
         {/* <form action=""
           className="needs-validation"
           onSubmit={() => {
@@ -195,6 +195,50 @@ class CheckoutForm extends React.Component {
           </div>
           <div className="form-group">
             <h5>Payment Details</h5>
+          </div>
+          <div className="form-row p-3 border rounded mb-3">
+            <div className="form-group col-md-6">
+              <label htmlFor="creditCard">Credit Card Number</label>
+              <input type="text" className="form-control" placeholder="0000 0000 0000 0000" required minLength="16" maxLength="16" />
+            </div>
+            <div className="form-group col-md-2">
+              <label htmlFor="inputState">Month</label>
+              <select className="form-control" required>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+            </div>
+            <div className="form-group col-md-2">
+              <label htmlFor="inputState">Year</label>
+              <select className="form-control" required>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+                <option>2026</option>
+                <option>2027</option>
+                <option>2028</option>
+                <option>2029</option>
+                <option>2030</option>
+              </select>
+            </div>
+            <div className="form-group col-md-2">
+              <label htmlFor="inputZip">CVV</label>
+              <input type="text" className="form-control" placeholder="000" required />
+            </div>
           </div>
           <div className="form-group">
             <div className="form-check">
