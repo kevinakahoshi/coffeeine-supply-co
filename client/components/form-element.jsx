@@ -20,9 +20,20 @@ class FormElement extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  handleChange() {
+  onKeyDown(event) {
+    switch (event.target.name) {
+      case 'creditCard':
+        if (event.keyCode > 47 && event.keyCode < 58) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
+    }
+  }
+
+  handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -36,10 +47,11 @@ class FormElement extends React.Component {
   }
 
   render() {
+    const creditCardNumber = this.state.creditCard;
     return (
       <form className="p-3 border rounded bg-white"
         id="checkout-form"
-        onChange={() => this.handleChange(event)}
+        onKeyDown={() => this.onKeyDown(event)}
         onSubmit={() => this.handleSubmit(event)}>
         <div className="form-group">
           <h5>Billing/Shipping Address</h5>
@@ -99,6 +111,7 @@ class FormElement extends React.Component {
             <label htmlFor="inputState">State</label>
             <select className="form-control"
               name="state"
+              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
               <option value="AL">Alabama</option>
@@ -170,17 +183,20 @@ class FormElement extends React.Component {
         <div className="form-row p-3 border rounded mb-3">
           <div className="form-group col-md-6">
             <label htmlFor="creditCard">Credit Card Number</label>
-            <input type="text"
+            <input type="tel"
               name="creditCard"
               className="form-control"
               minLength="16"
               maxLength="19"
+              onChange={this.onKeyDown}
+              value={creditCardNumber}
               required />
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputState">Month</label>
             <select className="form-control"
               name="month"
+              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
               <option value="01">01</option>
@@ -201,6 +217,7 @@ class FormElement extends React.Component {
             <label htmlFor="inputState">Year</label>
             <select className="form-control"
               name="year"
+              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
               <option value="2019">2019</option>
@@ -223,7 +240,7 @@ class FormElement extends React.Component {
               name="cvv"
               className="form-control"
               minLength="3"
-              maxLength="3"
+              maxLength="4"
               required />
           </div>
         </div>
@@ -231,6 +248,7 @@ class FormElement extends React.Component {
           <div className="form-check">
             <input className="form-check-input"
               name="terms"
+              onChange={() => this.handleChange(event)}
               type="checkbox"
               id="gridCheck"
               required />
