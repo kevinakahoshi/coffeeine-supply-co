@@ -16,25 +16,40 @@ class FormElement extends React.Component {
       month: '',
       year: '',
       cvv: '',
-      terms: ''
+      terms: '',
+      formValidation: {
+        fullName: true,
+        phone: true,
+        email: true,
+        address1: true,
+        address2: true,
+        city: true,
+        state: true,
+        zipCode: true,
+        creditCard: true,
+        month: true,
+        year: true,
+        cvv: true,
+        terms: true
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-  }
-
-  onKeyDown(event) {
-    switch (event.target.name) {
-      case 'creditCard':
-        if (event.keyCode > 47 && event.keyCode < 58) {
-          this.setState({ [event.target.name]: event.target.value });
-        }
-        break;
-    }
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    switch (event.target.name) {
+      case 'phone':
+      case 'creditCard':
+      case 'zipCode':
+      case 'cvv':
+        if (/^[0-9]*$/.test(event.target.value)) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
+      default:
+        this.setState({ [event.target.name]: event.target.value });
+    }
   }
 
   handleSubmit(event) {
@@ -44,14 +59,14 @@ class FormElement extends React.Component {
     } else if (this.state.creditCard.includes('-')) {
       this.setState({ creditCard: this.state.creditCard.split('-').join('') });
     }
+
   }
 
   render() {
-    const creditCardNumber = this.state.creditCard;
     return (
-      <form className="p-3 border rounded bg-white"
+      <form className="p-3 border rounded bg-white needs-validation"
         id="checkout-form"
-        onKeyDown={() => this.onKeyDown(event)}
+        onChange={() => this.handleChange(event)}
         onSubmit={() => this.handleSubmit(event)}>
         <div className="form-group">
           <h5>Billing/Shipping Address</h5>
@@ -60,17 +75,22 @@ class FormElement extends React.Component {
           <label htmlFor="name">Full Name</label>
           <input type="text"
             name="fullName"
-            className="form-control"
+            className={`form-control ${this.state.formValidation.fullName ? null : 'is-invalid'}`}
             minLength="5"
             maxLength="65"
             required />
+          <div className="invalid-feedback">
+            <small>Not a valid name input.</small>
+          </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md-6">
             <label htmlFor="name">Phone</label>
             <input type="tel"
               name="phone"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.phone ? null : 'is-invalid'}`}
+              onChange={() => this.handleChange(event)}
+              value={this.state.phone}
               minLength="10"
               maxLength="11" />
           </div>
@@ -78,10 +98,13 @@ class FormElement extends React.Component {
             <label htmlFor="email">Email</label>
             <input type="email"
               name="email"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.email ? null : 'is-invalid'}`}
               minLength="6"
               maxLength="254"
               required />
+            <div className="invalid-feedback">
+              <small>Missing or invalid email address.</small>
+            </div>
           </div>
         </div>
         <div className="form-row">
@@ -89,14 +112,17 @@ class FormElement extends React.Component {
             <label htmlFor="inputAddress">Address 1</label>
             <input type="text"
               name="address1"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.address1 ? null : 'is-invalid'}`}
               required />
+            <div className="invalid-feedback">
+              <small>Missing or invalid address.</small>
+            </div>
           </div>
           <div className="form-group col-md-6">
             <label htmlFor="inputAddress2">Address 2</label>
             <input type="text"
               name="address2"
-              className="form-control" />
+              className={`form-control ${this.state.formValidation.address2 ? null : 'is-invalid'}`} />
           </div>
         </div>
         <div className="form-row">
@@ -104,14 +130,18 @@ class FormElement extends React.Component {
             <label htmlFor="inputCity">City</label>
             <input type="text"
               name="city"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.city ? null : 'is-invalid'}`}
+              minLength="3"
+              maxLength="50"
               required />
+            <div className="invalid-feedback">
+              <small>Missing or invalid</small>
+            </div>
           </div>
           <div className="form-group col-md-3">
             <label htmlFor="inputState">State</label>
-            <select className="form-control"
+            <select className={`form-control ${this.state.formValidation.state ? null : 'is-invalid'}`}
               name="state"
-              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
               <option value="AL">Alabama</option>
@@ -166,15 +196,23 @@ class FormElement extends React.Component {
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
             </select>
+            <div className="invalid-feedback">
+              <small>Please select a state.</small>
+            </div>
           </div>
           <div className="form-group col-md-3">
             <label htmlFor="inputZip">Zip</label>
             <input type="text"
               name="zipCode"
-              className="form-control"
-              required
+              className={`form-control ${this.state.formValidation.zipCode ? null : 'is-invalid'}`}
+              onChange={() => this.handleChange(event)}
+              value={this.state.formValidation.email.zipCode}
               minLength="5"
-              maxLength="9"/>
+              maxLength="9"
+              required/>
+            <div className="invalid-feedback">
+              <small>Missing or invalid zipcode.</small>
+            </div>
           </div>
         </div>
         <div className="form-group">
@@ -183,20 +221,22 @@ class FormElement extends React.Component {
         <div className="form-row p-3 border rounded mb-3">
           <div className="form-group col-md-6">
             <label htmlFor="creditCard">Credit Card Number</label>
-            <input type="tel"
+            <input type="text"
               name="creditCard"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.creditCard ? null : 'is-invalid'}`}
               minLength="16"
               maxLength="19"
-              onChange={this.onKeyDown}
-              value={creditCardNumber}
+              onChange={() => this.handleChange(event)}
+              value={this.state.formValidation.email.creditCard}
               required />
+            <div className="invalid-feedback">
+              <small>Missing or invalid credit card number.</small>
+            </div>
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputState">Month</label>
-            <select className="form-control"
+            <select className={`form-control ${this.state.formValidation.month ? null : 'is-invalid'}`}
               name="month"
-              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
               <option value="01">01</option>
@@ -212,15 +252,16 @@ class FormElement extends React.Component {
               <option value="11">11</option>
               <option value="12">12</option>
             </select>
+            <div className="invalid-feedback">
+              <small>Please select a month.</small>
+            </div>
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputState">Year</label>
-            <select className="form-control"
+            <select className={`form-control ${this.state.formValidation.year ? null : 'is-invalid'}`}
               name="year"
-              onChange={() => this.handleChange(event)}
               required>
               <option defaultValue hidden></option>
-              <option value="2019">2019</option>
               <option value="2020">2020</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
@@ -233,22 +274,27 @@ class FormElement extends React.Component {
               <option value="2029">2029</option>
               <option value="2030">2030</option>
             </select>
+            <div className="invalid-feedback">
+              <small>Please select a year.</small>
+            </div>
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputZip">CVV</label>
             <input type="text"
               name="cvv"
-              className="form-control"
+              className={`form-control ${this.state.formValidation.cvv ? null : 'is-invalid'}`}
               minLength="3"
               maxLength="4"
               required />
+            <div className="invalid-feedback">
+              <small>Missing or invalid CVV.</small>
+            </div>
           </div>
         </div>
         <div className="form-group">
           <div className="form-check">
             <input className="form-check-input"
               name="terms"
-              onChange={() => this.handleChange(event)}
               type="checkbox"
               id="gridCheck"
               required />
