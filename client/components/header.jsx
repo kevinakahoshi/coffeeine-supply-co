@@ -18,7 +18,7 @@ function Header(props) {
           <i className="fas fa-mug-hot" /> {name}</h5>
         <p className="text-light d-inline-block float-right m-0 pointer" onClick={() => {
           cartCallback('cart', {});
-        }}>{itemCount} Items <i className="fas fa-shopping-cart"></i></p>
+        }}>{itemCount} Item{itemCount === 1 ? null : 's'} <i className="fas fa-shopping-cart"></i></p>
       </div>
     </div>
   );
