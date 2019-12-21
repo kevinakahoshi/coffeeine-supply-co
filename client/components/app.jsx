@@ -3,7 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
-import CheckoutForm from './checkout-form';
+import CheckoutPage from './checkout-page';
 import Footer from './footer';
 
 export default class App extends React.Component {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       cart: [],
       view: {
-        name: 'checkout',
+        name: 'catalog',
         params: {}
       }
     };
@@ -99,7 +99,7 @@ export default class App extends React.Component {
     };
 
     fetch(request, initObj)
-      .then(response => { return response; })
+      .then(response => response.json())
       .then(data => {
         this.setState({ cart: [] });
         this.setView('catalog', {});
@@ -126,7 +126,7 @@ export default class App extends React.Component {
         />;
         break;
       case 'checkout':
-        view = <CheckoutForm setView={this.setView}
+        view = <CheckoutPage setView={this.setView}
           cartItems={this.state.cart}
           placeOrder={this.placeOrder}
           calculateTotal={this.calculateTotal} />;
