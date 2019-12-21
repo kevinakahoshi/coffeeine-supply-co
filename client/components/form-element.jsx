@@ -149,11 +149,11 @@ class FormElement extends React.Component {
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
           <input type="text"
+            autoComplete="new-password"
             name="fullName"
             className={`form-control ${this.state.formValidation.fullName ? null : 'is-invalid'}`}
             minLength="5"
-            maxLength="65"
-          />
+            maxLength="65" />
           <div className="invalid-feedback">
             <small>Not a valid name input.</small>
           </div>
@@ -162,6 +162,7 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="name">Phone</label>
             <input type="tel"
+              autoComplete="new-password"
               name="phone"
               className={`form-control ${this.state.formValidation.phone ? null : 'is-invalid'}`}
               onChange={() => this.handleChange(event)}
@@ -175,11 +176,11 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="email">Email</label>
             <input type="email"
+              autoComplete="new-password"
               name="email"
               className={`form-control ${this.state.formValidation.email ? null : 'is-invalid'}`}
               minLength="6"
-              maxLength="254"
-            />
+              maxLength="254" />
             <div className="invalid-feedback">
               <small>Missing or invalid email address.</small>
             </div>
@@ -189,9 +190,9 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="inputAddress">Address 1</label>
             <input type="text"
+              autoComplete="new-password"
               name="address1"
-              className={`form-control ${this.state.formValidation.address1 ? null : 'is-invalid'}`}
-            />
+              className={`form-control ${this.state.formValidation.address1 ? null : 'is-invalid'}`} />
             <div className="invalid-feedback">
               <small>Missing or invalid address.</small>
             </div>
@@ -199,6 +200,7 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="inputAddress2">Address 2</label>
             <input type="text"
+              autoComplete="new-password"
               name="address2"
               className={`form-control ${this.state.formValidation.address2 ? null : 'is-invalid'}`} />
           </div>
@@ -207,11 +209,11 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="inputCity">City</label>
             <input type="text"
+              autoComplete="new-password"
               name="city"
               className={`form-control ${this.state.formValidation.city ? null : 'is-invalid'}`}
               minLength="3"
-              maxLength="50"
-            />
+              maxLength="50" />
             <div className="invalid-feedback">
               <small>Missing or invalid city.</small>
             </div>
@@ -219,8 +221,7 @@ class FormElement extends React.Component {
           <div className="form-group col-md-3">
             <label htmlFor="inputState">State</label>
             <select className={`form-control ${this.state.formValidation.state ? null : 'is-invalid'}`}
-              name="state"
-            >
+              name="state">
               <option defaultValue hidden></option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -281,13 +282,13 @@ class FormElement extends React.Component {
           <div className="form-group col-md-3">
             <label htmlFor="inputZip">Zip</label>
             <input type="text"
+              autoComplete="new-password"
               name="zipCode"
               className={`form-control ${this.state.formValidation.zipCode ? null : 'is-invalid'}`}
               onChange={() => this.handleChange(event)}
               value={this.state.zipCode}
               minLength="5"
-              maxLength="9"
-            />
+              maxLength="9" />
             <div className="invalid-feedback">
               <small>Missing or invalid zipcode.</small>
             </div>
@@ -300,13 +301,13 @@ class FormElement extends React.Component {
           <div className="form-group col-md-6">
             <label htmlFor="creditCard">Credit Card Number</label>
             <input type="text"
+              autoComplete="new-password"
               name="creditCard"
               className={`form-control ${this.state.formValidation.creditCard ? null : 'is-invalid'}`}
               minLength="16"
               maxLength="16"
               onChange={() => this.handleChange(event)}
-              value={this.state.creditCard}
-            />
+              value={this.state.creditCard} />
             <div className="invalid-feedback">
               <small>Missing or invalid credit card number.</small>
             </div>
@@ -314,8 +315,7 @@ class FormElement extends React.Component {
           <div className="form-group col-md-2">
             <label htmlFor="inputState">Month</label>
             <select className={`form-control ${this.state.formValidation.month ? null : 'is-invalid'}`}
-              name="month"
-            >
+              name="month">
               <option defaultValue hidden></option>
               <option value="01">01</option>
               <option value="02">02</option>
@@ -337,8 +337,7 @@ class FormElement extends React.Component {
           <div className="form-group col-md-2">
             <label htmlFor="inputState">Year</label>
             <select className={`form-control ${this.state.formValidation.year ? null : 'is-invalid'}`}
-              name="year"
-            >
+              name="year">
               <option defaultValue hidden></option>
               <option value="2020">2020</option>
               <option value="2021">2021</option>
@@ -359,13 +358,13 @@ class FormElement extends React.Component {
           <div className="form-group col-md-2">
             <label htmlFor="inputZip">CVV</label>
             <input type="text"
+              autoComplete="new-password"
               name="cvv"
               className={`form-control ${this.state.formValidation.cvv ? null : 'is-invalid'}`}
               onChange={this.handleChange}
               value={this.state.cvv}
               minLength="3"
-              maxLength="4"
-            />
+              maxLength="4" />
             <div className="invalid-feedback">
               <small>Missing or invalid CVV.</small>
             </div>
