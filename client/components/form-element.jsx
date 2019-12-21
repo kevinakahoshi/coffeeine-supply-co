@@ -54,10 +54,26 @@ class FormElement extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const formValidation = JSON.parse(JSON.stringify(this.state.formValidation));
+
+    if (!/[A-Z][a-z]{1, 65}/.test(this.state.fullName)) {
+      formValidation.fullName = false;
+    }
+
+    if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email)) {
+      formValidation.email = false;
+    }
+
     if (this.state.creditCard.includes(' ')) {
       this.setState({ creditCard: this.state.creditCard.split(' ').join('') });
     } else if (this.state.creditCard.includes('-')) {
       this.setState({ creditCard: this.state.creditCard.split('-').join('') });
+    }
+
+    if (Object.values(formValidation).indexOf(false) === -1) {
+      // console.log('Everything is truthy');
+    } else {
+      // console.log('Everything is falsy');
     }
 
   }
@@ -206,7 +222,7 @@ class FormElement extends React.Component {
               name="zipCode"
               className={`form-control ${this.state.formValidation.zipCode ? null : 'is-invalid'}`}
               onChange={() => this.handleChange(event)}
-              value={this.state.formValidation.email.zipCode}
+              value={this.state.zipCode}
               minLength="5"
               maxLength="9"
               required/>
@@ -227,7 +243,7 @@ class FormElement extends React.Component {
               minLength="16"
               maxLength="19"
               onChange={() => this.handleChange(event)}
-              value={this.state.formValidation.email.creditCard}
+              value={this.state.creditCard}
               required />
             <div className="invalid-feedback">
               <small>Missing or invalid credit card number.</small>
