@@ -63,6 +63,11 @@ img {
   object-fit: contain;
 }
 
+.product-column {
+  top: 72px;
+  z-index: 1019;
+}
+
 textarea {
   resize: none;
 }
@@ -71,6 +76,7 @@ textarea {
   background: #00000040;
   top: 0;
   left: 0;
+  z-index: 1100;
 }
 
 .modal-message {

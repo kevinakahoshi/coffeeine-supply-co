@@ -8,7 +8,7 @@ function CartSummaryItem(props) {
 
   return (
     <div className="container mb-3">
-      <div className="row border bg-white shadow-sm rounded p-3 position-relative">
+      <div className="row border bg-white rounded p-3 position-relative item-card">
         <div className="d-flex justify-content-between w-100">
           <h3>{name}</h3>
           <i className="far fa-times-circle cancel-button"

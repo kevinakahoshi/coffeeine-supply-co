@@ -1,11 +1,20 @@
 import React from 'react';
+import AddModal from './add-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      showModal: false
     };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    });
   }
 
   componentDidMount() {
@@ -42,6 +51,7 @@ class ProductDetails extends React.Component {
               <p>{this.state.product.shortDescription}</p>
               <button className="btn btn-primary" onClick={() => {
                 this.props.sendToCart(this.state.product.productId, '+');
+                this.toggleModal();
               }}>Add to Cart</button>
             </div>
           </div>
@@ -49,6 +59,10 @@ class ProductDetails extends React.Component {
             <p>{this.state.product.longDescription}</p>
           </div>
         </div>
+        <AddModal showModal={this.state.showModal}
+          setView={this.props.setView}
+          toggleModal={this.toggleModal}
+          product={this.state.product} />
       </div>
     );
   }

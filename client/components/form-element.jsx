@@ -288,7 +288,7 @@ class FormElement extends React.Component {
               onChange={() => this.handleChange(event)}
               value={this.state.zipCode}
               minLength="5"
-              maxLength="9" />
+              maxLength="5" />
             <div className="invalid-feedback">
               <small>Missing or invalid zipcode.</small>
             </div>
@@ -361,7 +361,7 @@ class FormElement extends React.Component {
               autoComplete="new-password"
               name="cvv"
               className={`form-control ${this.state.formValidation.cvv ? null : 'is-invalid'}`}
-              onChange={this.handleChange}
+              onChange={() => this.handleChange(event)}
               value={this.state.cvv}
               minLength="3"
               maxLength="4" />
