@@ -7,8 +7,8 @@ function RemoveModal(props) {
         <div className="m-auto p-3">
           <div className="bg-white rounded p-3 modal-message">
             <h5 className="text-center">{props.cartItem.name}</h5>
-            <div className="d-flex">
-              <img src={props.cartItem.image} className="w-75 m-auto" />
+            <div>
+              <img src={props.cartItem.image} className="w-75 d-block m-auto" />
             </div>
             <p className="text-center">Are you sure you want to remove this from your cart?</p>
             <div className="btn-group w-100">
