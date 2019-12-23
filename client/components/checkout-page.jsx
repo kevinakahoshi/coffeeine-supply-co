@@ -32,7 +32,7 @@ function CheckoutPage(props) {
         <div className="col-md-8">
           <FormElement placeOrder={props.placeOrder} />
         </div>
-        <div className="col-md-4 d-md-block d-sm-none mb-md-0 mb-sm-3">
+        <div className="col-md-4 d-md-block d-none">
           <div className="border rounded bg-light sticky-top product-column">
             {cartOverview}
           </div>

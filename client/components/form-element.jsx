@@ -281,7 +281,7 @@ class FormElement extends React.Component {
           </div>
           <div className="form-group col-md-3">
             <label htmlFor="inputZip">Zip</label>
-            <input type="text"
+            <input type="tel"
               autoComplete="new-password"
               name="zipCode"
               className={`form-control ${this.state.formValidation.zipCode ? '' : 'is-invalid'}`}
@@ -300,7 +300,7 @@ class FormElement extends React.Component {
         <div className="form-row p-3 border rounded mb-3">
           <div className="form-group col-md-6">
             <label htmlFor="creditCard">Credit Card Number</label>
-            <input type="text"
+            <input type="tel"
               autoComplete="new-password"
               name="creditCard"
               className={`form-control ${this.state.formValidation.creditCard ? '' : 'is-invalid'}`}
@@ -357,7 +357,7 @@ class FormElement extends React.Component {
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputZip">CVV</label>
-            <input type="text"
+            <input type="tel"
               autoComplete="new-password"
               name="cvv"
               className={`form-control ${this.state.formValidation.cvv ? '' : 'is-invalid'}`}

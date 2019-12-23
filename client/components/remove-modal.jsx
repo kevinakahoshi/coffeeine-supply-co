@@ -5,7 +5,7 @@ function RemoveModal(props) {
     return (
       <div className="position-fixed h-100 w-100 d-flex overlay">
         <div className="m-auto p-3">
-          <div className="bg-white rounded border p-3 modal-message">
+          <div className="bg-white rounded p-3 modal-message">
             <h5 className="text-center">{props.cartItem.name}</h5>
             <div className="d-flex">
               <img src={props.cartItem.image} className="w-75 m-auto" />
