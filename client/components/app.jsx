@@ -18,6 +18,7 @@ export default class App extends React.Component {
       showIntroModal: true
     };
     this.setView = this.setView.bind(this);
+    this.toggleIntroModal = this.toggleIntroModal.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.sendToCart = this.sendToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
@@ -32,6 +33,10 @@ export default class App extends React.Component {
         params: params
       }
     });
+  }
+
+  toggleIntroModal() {
+    this.setState({ showIntroModal: !this.state.showIntroModal });
   }
 
   calculateTotal() {
@@ -116,15 +121,16 @@ export default class App extends React.Component {
     let view = null;
     switch (this.state.view.name) {
       case 'catalog':
-        view = <ProductList setView={this.setView} />;
+        view = <ProductList setView={this.setView}
+          showIntroModal={this.state.showIntroModal}
+          toggleIntroModal={this.toggleIntroModal} />;
         break;
       case 'cart':
         view = <CartSummary setView={this.setView}
           cartItems={this.state.cart}
           calculateTotal={this.calculateTotal}
           removeFromCart={this.removeFromCart}
-          sendToCart={this.sendToCart}
-        />;
+          sendToCart={this.sendToCart} />;
         break;
       case 'checkout':
         view = <CheckoutPage setView={this.setView}
