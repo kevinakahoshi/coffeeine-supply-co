@@ -17,7 +17,7 @@ function AddModal(props) {
             <div className="btn-group w-100">
               <button className="btn btn-secondary w-50"
                 onClick={props.toggleModal}>Close</button>
-              <button className="btn btn-primary w-50"
+              <button className="btn text-white primary w-50"
                 onClick={() => props.setView('cart', {})}>View Cart</button>
             </div>
           </div>
