@@ -5,6 +5,20 @@ function CheckoutPage(props) {
   window.scrollTo(0, 0);
   const orderTotal = props.calculateTotal();
 
+  const cartOverview = props.cartItems.map(product => {
+    return (
+      <div className="border rounded bg-white p-1 m-3 d-flex" key={product.id}>
+        <div className="col-4 p-0 mr-3">
+          <img className="image-fluid" src={product.image} />
+        </div>
+        <div className="my-auto">
+          <h6>{product.name}</h6>
+          <small className="text-muted">Quantity: {product.quantity}</small>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className="container py-5">
       <div className="mb-3">
@@ -18,7 +32,11 @@ function CheckoutPage(props) {
         <div className="col-md-8">
           <FormElement placeOrder={props.placeOrder} />
         </div>
-        <div className="col-md-4 border rounded bg-light"></div>
+        <div className="col-md-4 d-md-block d-sm-none mb-md-0 mb-sm-3">
+          <div className="border rounded bg-light sticky-top product-column">
+            {cartOverview}
+          </div>
+        </div>
       </div>
     </div>
   );

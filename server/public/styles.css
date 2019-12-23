@@ -63,6 +63,11 @@ img {
   object-fit: contain;
 }
 
+.product-column {
+  top: 72px;
+  z-index: 1019;
+}
+
 textarea {
   resize: none;
 }
@@ -71,6 +76,7 @@ textarea {
   background: #00000040;
   top: 0;
   left: 0;
+  z-index: 1100;
 }
 
 .modal-message {
@@ -88,6 +94,42 @@ textarea {
 
 .cancel-button:hover {
   color: #000;
+}
+
+.carousel-item {
+  height: 75vh;
+}
+
+.carousel-item img {
+  height: 75vh;
+  object-fit: cover;
+}
+
+.carousel-overlay {
+  background: #00000033;
+}
+
+.center-caption {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+select {
+  background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 100% 50%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (max-width: 767px) {
+  .carousel-item {
+    height: 50vh;
+  }
+
+  .carousel-item img {
+    height: 50vh;
+  }
 }
 
 @keyframes fade-in {

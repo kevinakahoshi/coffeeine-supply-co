@@ -29,11 +29,43 @@ class ProductList extends React.Component {
   render() {
     return (
       <>
-        <div className="catalog-hero d-flex">
-          <div className="container m-auto">
-            <h1 className="text-center text-white h2">Coffeine Supply Co</h1>
-            <h3 className="text-center text-white h4">A coffee depot for kindred souls.</h3>
+        <div id="carousel-captions" className="carousel slide carousel-fade" data-ride="carousel">
+          <ol className="carousel-indicators">
+            <li data-target="#carousel-captions" data-slide-to="0" className="active"></li>
+            <li data-target="#carousel-captions" data-slide-to="1"></li>
+            <li data-target="#carousel-captions" data-slide-to="2"></li>
+          </ol>
+          <div className="carousel-inner">
+            <div className="carousel-item active" data-interval="5000">
+              <img src="./images/carousel-2.jpg" className="d-block w-100 carousel-image" alt="..." />
+              <div className="carousel-caption d-none d-md-block center-caption">
+                <h5>Top Quality Coffee Supplies</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </div>
+            <div className="carousel-item" data-interval="5000">
+              <img src="./images/carousel-3.jpg" className="d-block w-100 carousel-image" alt="..." />
+              <div className="carousel-caption d-none d-md-block center-caption">
+                <h5>Beans from Local Roasters</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+            <div className="carousel-item" data-interval="5000">
+              <img src="./images/hero-beans.jpg" className="d-block w-100 carousel-image" alt="..." />
+              <div className="carousel-caption d-none d-md-block center-caption">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+            </div>
           </div>
+          <a className="carousel-control-prev" href="#carousel-captions" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a className="carousel-control-next" href="#carousel-captions" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
         </div>
         <div className="container py-5">
           <div className="d-flex card-deck">
