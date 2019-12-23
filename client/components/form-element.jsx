@@ -384,7 +384,7 @@ class FormElement extends React.Component {
           </div>
         </div>
         <button type="submit"
-          className="btn btn-primary">Process Order</button>
+          className="btn text-white primary">Process Order</button>
       </form>
     );
   }

@@ -12,14 +12,23 @@ body {
 
 a {
   transition: .3s all;
+  color: #5A4894;
 }
 
 a:hover {
   text-decoration: none;
 }
 
+.primary {
+  background: #5A4894;
+}
+
 .logo {
   cursor: pointer;
+}
+
+.background-dark {
+  background: #2D3A54;
 }
 
 .catalog-hero {

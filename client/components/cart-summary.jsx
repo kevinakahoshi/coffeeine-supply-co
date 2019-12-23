@@ -69,7 +69,7 @@ class CartSummary extends React.Component {
             showModal={this.state.showModal}/>
           <div className="d-md-flex justify-content-between">
             <h3 className="md-my-auto text-black-50">Item Total: ${itemTotal}</h3>
-            <button className="btn btn-primary my-auto" onClick={() => {
+            <button className="btn text-white primary my-auto" onClick={() => {
               this.props.setView('checkout', {});
             }}>Proceed to Checkout</button>
           </div>
