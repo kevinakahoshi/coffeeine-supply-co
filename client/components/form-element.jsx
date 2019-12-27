@@ -16,7 +16,7 @@ class FormElement extends React.Component {
       month: '',
       year: '',
       cvv: '',
-      terms: '',
+      terms: false,
       formValidation: {
         fullName: true,
         phone: true,
@@ -71,6 +71,9 @@ class FormElement extends React.Component {
           this.setState({ [event.target.name]: event.target.value });
         }
         break;
+      case 'terms':
+        this.setState({ terms: !this.state.terms });
+        break;
       default:
         this.setState({ [event.target.name]: event.target.value });
     }
@@ -83,6 +86,7 @@ class FormElement extends React.Component {
     const formValidation = JSON.parse(JSON.stringify(this.state.formValidation));
     const nameRegex = new RegExp(/^[a-zA-Z ]+$/);
     const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
     if (!nameRegex.test(this.state.fullName) || this.state.fullName.length < 5) {
       formValidation.fullName = false;
     }
@@ -127,6 +131,10 @@ class FormElement extends React.Component {
       formValidation.cvv = false;
     }
 
+    if (!this.state.terms) {
+      formValidation.terms = false;
+    }
+
     if (Object.values(formValidation).indexOf(false) === -1) {
       const order = {
         fullName: this.state.fullName.trim(),
@@ -147,7 +155,6 @@ class FormElement extends React.Component {
         formValidation: formValidation
       });
     }
-
   }
 
   render() {
@@ -392,15 +399,17 @@ class FormElement extends React.Component {
         </div>
         <div className="form-group">
           <div className="form-check">
-            <input className="form-check-input"
+            <input className={`form-check-input ${this.state.formValidation.terms ? '' : 'is-invalid'}`}
               name="terms"
               type="checkbox"
-              id="gridCheck"
-              required />
+              id="gridCheck" />
             <label className="form-check-label"
               htmlFor="gridCheck">
               I accept that this website is for demonstration purposes, that no payment processing will be done, and that personal information such as names, addresses, or real credit card numbers should not be used on submission of this form.
             </label>
+            <div className="invalid-feedback">
+              <small>Terms are required.</small>
+            </div>
           </div>
         </div>
         <button type="submit"
