@@ -137,7 +137,7 @@ class FormElement extends React.Component {
         cvv: this.state.cvv,
         shippingAddress: `${this.state.address1.trim()} \n${this.state.address2} \n${this.state.city.trim()}, ${this.state.state} ${this.state.zipCode}`
       };
-
+      this.props.setConfirmation(this.props.cartOverview);
       this.props.placeOrder(order);
     } else {
       this.setState({

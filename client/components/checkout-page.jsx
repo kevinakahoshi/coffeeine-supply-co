@@ -30,7 +30,9 @@ function CheckoutPage(props) {
       <h3 className="text-black-50 mb-3">Order Total: ${orderTotal}</h3>
       <div className="row">
         <div className="col-md-8">
-          <FormElement placeOrder={props.placeOrder} />
+          <FormElement placeOrder={props.placeOrder}
+            cartOverview={props.cartItems}
+            setConfirmation={props.setConfirmation} />
         </div>
         <div className="col-md-4 d-md-block d-none">
           <div className="border rounded bg-light sticky-top product-column">
