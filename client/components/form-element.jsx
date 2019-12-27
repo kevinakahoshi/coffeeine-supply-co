@@ -63,6 +63,14 @@ class FormElement extends React.Component {
           this.setState({ [event.target.name]: event.target.value });
         }
         break;
+      case 'fullName':
+      case 'address1':
+      case 'address2':
+      case 'city':
+        if (event.target.value.indexOf('  ') === -1) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
       default:
         this.setState({ [event.target.name]: event.target.value });
     }
@@ -75,7 +83,7 @@ class FormElement extends React.Component {
     const formValidation = JSON.parse(JSON.stringify(this.state.formValidation));
     const nameRegex = new RegExp(/^[a-zA-Z ]+$/);
     const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    if (!nameRegex.test(this.state.fullName)) {
+    if (!nameRegex.test(this.state.fullName) || this.state.fullName.length < 5) {
       formValidation.fullName = false;
     }
 
@@ -91,7 +99,7 @@ class FormElement extends React.Component {
       formValidation.address1 = false;
     }
 
-    if (this.state.city.length < 2) {
+    if (this.state.city.length < 3) {
       formValidation.city = false;
     }
 
@@ -121,18 +129,23 @@ class FormElement extends React.Component {
 
     if (Object.values(formValidation).indexOf(false) === -1) {
       const order = {
-        fullName: this.state.fullName,
+        fullName: this.state.fullName.trim(),
         email: this.state.email,
         phone: this.state.phone,
         creditCard: this.state.creditCard,
         expirationDate: `${this.state.month}/${this.state.year}`,
         cvv: this.state.cvv,
-        shippingAddress: `${this.state.address1} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zipCode}`
+        shippingAddress: `${this.state.address1.trim()} \n${this.state.address2} \n${this.state.city.trim()}, ${this.state.state} ${this.state.zipCode}`
       };
-
+      this.props.setConfirmation(this.props.cartOverview);
       this.props.placeOrder(order);
     } else {
-      this.setState({ formValidation });
+      this.setState({
+        fullName: this.state.fullName.trim(),
+        address1: this.state.address1.trim(),
+        city: this.state.city.trim(),
+        formValidation: formValidation
+      });
     }
 
   }
@@ -142,7 +155,8 @@ class FormElement extends React.Component {
       <form className="p-3 border rounded bg-white needs-validation"
         id="checkout-form"
         onChange={() => this.handleChange(event)}
-        onSubmit={() => this.handleSubmit(event)}>
+        onSubmit={() => this.handleSubmit(event)}
+        noValidate>
         <div className="form-group">
           <h5>Billing/Shipping Address</h5>
         </div>
@@ -152,10 +166,12 @@ class FormElement extends React.Component {
             autoComplete="new-password"
             name="fullName"
             className={`form-control ${this.state.formValidation.fullName ? '' : 'is-invalid'}`}
+            onChange={() => this.handleChange(event)}
+            value={this.state.fullName}
             minLength="5"
             maxLength="65" />
           <div className="invalid-feedback">
-            <small>Not a valid name input.</small>
+            {this.state.fullName.length < 5 && this.state.fullName !== '' ? <small>Minimum of five characters.</small> : <small>Not a valid name input.</small>}
           </div>
         </div>
         <div className="form-row">
@@ -192,9 +208,11 @@ class FormElement extends React.Component {
             <input type="text"
               autoComplete="new-password"
               name="address1"
+              onChange={() => this.handleChange(event)}
+              value={this.state.address1}
               className={`form-control ${this.state.formValidation.address1 ? '' : 'is-invalid'}`} />
             <div className="invalid-feedback">
-              <small>Missing or invalid address.</small>
+              {this.state.address1.length < 3 && this.state.address1 !== '' ? <small>Minimum of three characters.</small> : <small>Missing or invalid street address.</small>}
             </div>
           </div>
           <div className="form-group col-md-6">
@@ -212,10 +230,12 @@ class FormElement extends React.Component {
               autoComplete="new-password"
               name="city"
               className={`form-control ${this.state.formValidation.city ? '' : 'is-invalid'}`}
+              onChange={() => this.handleChange(event)}
+              value={this.state.city}
               minLength="3"
               maxLength="50" />
             <div className="invalid-feedback">
-              <small>Missing or invalid city.</small>
+              {this.state.city.length < 3 && this.state.city !== '' ? <small>Minimum of three characters.</small> : <small>Missing or invalid city.</small>}
             </div>
           </div>
           <div className="form-group col-md-3">

@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutPage from './checkout-page';
+import OrderConfirmation from './order-confirmation';
 import Footer from './footer';
 
 export default class App extends React.Component {
@@ -15,6 +16,7 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
+      confirmationPage: null,
       showIntroModal: true
     };
     this.setView = this.setView.bind(this);
@@ -24,6 +26,7 @@ export default class App extends React.Component {
     this.removeFromCart = this.removeFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
+    this.setConfirmation = this.setConfirmation.bind(this);
   }
 
   setView(name, params) {
@@ -108,9 +111,13 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.setState({ cart: [] });
-        this.setView('catalog', {});
+        this.setView('orderConfirmation', {});
       })
       .catch(error => console.error('There was an error:', error.message));
+  }
+
+  setConfirmation(products) {
+    this.setState({ confirmationPage: products });
   }
 
   componentDidMount() {
@@ -134,9 +141,14 @@ export default class App extends React.Component {
         break;
       case 'checkout':
         view = <CheckoutPage setView={this.setView}
+          setConfirmation={this.setConfirmation}
           cartItems={this.state.cart}
           placeOrder={this.placeOrder}
           calculateTotal={this.calculateTotal} />;
+        break;
+      case 'orderConfirmation':
+        view = <OrderConfirmation setView={this.setView}
+          confirmationPage={this.state.confirmationPage} />;
         break;
       default:
         view = <ProductDetails id={this.state.view.params}
