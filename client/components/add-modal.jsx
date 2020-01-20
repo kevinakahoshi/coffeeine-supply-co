@@ -9,7 +9,7 @@ function AddModal(props) {
 
   if (props.showModal) {
     return (
-      <div className="position-fixed h-100 w-100 d-flex overlay">
+      <div className="position-fixed h-100 w-100 d-flex overlay fade-in">
         <div className="m-auto p-3">
           <div className="bg-white rounded p-3 modal-message">
             <div className="d-flex">

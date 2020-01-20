@@ -3,7 +3,7 @@ import React from 'react';
 function IntroModal(props) {
   if (props.showIntroModal) {
     return (
-      <div className="position-fixed h-100 w-100 d-flex overlay">
+      <div className="position-fixed h-100 w-100 d-flex overlay fade-in">
         <div className="m-auto p-3">
           <div className="bg-white rounded p-3 modal-message">
             <h5 className="text-center">Welcome to Coffeine Supply Co</h5>

@@ -17,7 +17,8 @@ export default class App extends React.Component {
         params: {}
       },
       confirmationPage: null,
-      showIntroModal: true
+      showIntroModal: true,
+      fadeOut: false
     };
     this.setView = this.setView.bind(this);
     this.toggleIntroModal = this.toggleIntroModal.bind(this);
@@ -30,12 +31,16 @@ export default class App extends React.Component {
   }
 
   setView(name, params) {
-    this.setState({
-      view: {
-        name: name,
-        params: params
-      }
-    });
+    this.setState({ fadeOut: true });
+    setTimeout(() => {
+      this.setState({
+        fadeOut: false,
+        view: {
+          name: name,
+          params: params
+        }
+      });
+    }, 750);
   }
 
   toggleIntroModal() {
@@ -162,7 +167,7 @@ export default class App extends React.Component {
         <Header name="Coffeine Supply Co"
           setView={this.setView}
           cartItems={this.state.cart} />
-        <div className="content-div">
+        <div className={`content-div ${this.state.fadeOut ? 'fade-out' : 'fade-in'}`}>
           {view}
         </div>
         <Footer />

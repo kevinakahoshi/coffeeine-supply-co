@@ -6,8 +6,14 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-* {
+.fade-in {
   animation: fade-in .75s;
+  animation-fill-mode: forwards;
+}
+
+.fade-out {
+  animation: fade-out .75s;
+  animation-fill-mode: forwards;
 }
 
 a {
@@ -157,4 +163,9 @@ select {
 @keyframes fade-in {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
