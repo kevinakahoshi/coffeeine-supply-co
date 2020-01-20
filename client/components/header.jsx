@@ -1,9 +1,9 @@
 import React from 'react';
+import IntroModal from './intro-modal';
 
 function Header(props) {
   const name = props.name;
   let itemCount = 0;
-  const cartCallback = props.setView;
 
   for (let index = 0; index < props.cartItems.length; index++) {
     itemCount += props.cartItems[index].quantity;
@@ -13,13 +13,16 @@ function Header(props) {
     <div className="background-dark py-3 sticky-top">
       <div className="container">
         <h5 className="text-light d-inline-block m-0 logo" onClick={() => {
-          cartCallback('catalog', {});
+          props.setView('catalog', {});
         }}>
           <i className="fas fa-mug-hot" /> {name}</h5>
         <p className="text-light d-inline-block float-right m-0 pointer" onClick={() => {
-          cartCallback('cart', {});
-        }}>{itemCount} Item{itemCount === 1 ? null : 's'} <i className="fas fa-shopping-cart"></i></p>
+          props.setView('cart', {});
+        }}>{itemCount} Item{itemCount === 1 ? null : 's'} <i className="fas fa-shopping-cart" />
+        </p>
       </div>
+      <IntroModal showIntroModal={props.showIntroModal}
+        toggleIntroModal={props.toggleIntroModal} />
     </div>
   );
 }
