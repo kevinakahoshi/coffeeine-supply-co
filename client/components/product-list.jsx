@@ -43,8 +43,6 @@ class ProductList extends React.Component {
             }
           </div>
         </div>
-        {/* <IntroModal showIntroModal={this.props.showIntroModal}
-          toggleIntroModal={this.props.toggleIntroModal} /> */}
       </>
     );
   }
