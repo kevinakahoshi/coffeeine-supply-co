@@ -1,7 +1,7 @@
 import React from 'react';
 import CatalogCarousel from './catalog-carousel';
 import ProductListItem from './product-list-item';
-import IntroModal from './intro-modal';
+// import IntroModal from './intro-modal';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -43,8 +43,8 @@ class ProductList extends React.Component {
             }
           </div>
         </div>
-        <IntroModal showIntroModal={this.props.showIntroModal}
-          toggleIntroModal={this.props.toggleIntroModal} />
+        {/* <IntroModal showIntroModal={this.props.showIntroModal}
+          toggleIntroModal={this.props.toggleIntroModal} /> */}
       </>
     );
   }

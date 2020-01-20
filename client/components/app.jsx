@@ -35,10 +35,7 @@ export default class App extends React.Component {
     setTimeout(() => {
       this.setState({
         fadeOut: false,
-        view: {
-          name: name,
-          params: params
-        }
+        view: { name, params }
       });
     }, 750);
   }
@@ -166,7 +163,10 @@ export default class App extends React.Component {
       <>
         <Header name="Coffeine Supply Co"
           setView={this.setView}
-          cartItems={this.state.cart} />
+          toggleIntroModal={this.toggleIntroModal}
+          showIntroModal={this.state.showIntroModal}
+          cartItems={this.state.cart}
+          currentView={this.state.view.name} />
         <div className={`content-div ${this.state.fadeOut ? 'fade-out' : 'fade-in'}`}>
           {view}
         </div>
