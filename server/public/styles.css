@@ -6,6 +6,10 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+* {
+  animation: fade-in .75s;
+}
+
 .fade-in {
   animation: fade-in .75s;
   animation-fill-mode: forwards;
@@ -45,7 +49,7 @@ a:hover {
 }
 
 .content-div {
-  min-height: 77.5vh;
+  min-height: calc(100vh - 57px);
   background: #fff;
 }
 
