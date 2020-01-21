@@ -22,4 +22,4 @@ Link: https://coffeine.kevinakahoshi.com/
 - User can enter their purchase information
 
 # Preview
-![Home](https://user-images.githubusercontent.com/53406674/70953748-3e542b80-201f-11ea-9022-9316688aadca.png)
+![FireShot Capture 079 - Coffeine Supply Co - A Coffee Depot for Kindred Souls_ - coffeine kevinakahoshi com](https://user-images.githubusercontent.com/53406674/72827561-def5c680-3c2f-11ea-8607-40188e3bc753.png)
