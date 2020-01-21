@@ -11,7 +11,7 @@ function ProductListItem(props) {
       <div className="card mb-4 pointer item-card" onClick={() => {
         setView('details', { productId: props.product.productId });
       }}>
-        <img src={image} alt="" className="card-img-top object-fit-card"/>
+        <img src={image} alt={name} className="card-img-top object-fit-card"/>
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text text-black-50">{`$${price}`}</p>
