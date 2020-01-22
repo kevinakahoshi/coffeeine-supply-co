@@ -17,7 +17,10 @@ export default class App extends React.Component {
         params: {}
       },
       confirmationPage: null,
-      showIntroModal: true,
+      showIntroModal: {
+        show: true,
+        displayNone: false
+      },
       fadeOut: false
     };
     this.setView = this.setView.bind(this);
@@ -41,7 +44,20 @@ export default class App extends React.Component {
   }
 
   toggleIntroModal() {
-    this.setState({ showIntroModal: !this.state.showIntroModal });
+    this.setState({
+      showIntroModal: {
+        show: false,
+        displayNone: false
+      }
+    });
+    setTimeout(() => {
+      this.setState({
+        showIntroModal: {
+          show: false,
+          displayNone: true
+        }
+      });
+    }, 750);
   }
 
   calculateTotal() {

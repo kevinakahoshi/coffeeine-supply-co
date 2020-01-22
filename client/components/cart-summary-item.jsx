@@ -8,19 +8,19 @@ function CartSummaryItem(props) {
 
   return (
     <div className="container mb-3">
-      <div className="row border bg-white rounded p-3 position-relative item-card">
+      <div className="row border bg-white rounded p-3 position-relative item-card slide-in">
         <div className="d-flex justify-content-between w-100">
-          <h3>{name}</h3>
+          <h3 className="slide-in">{name}</h3>
           <i className="far fa-times-circle cancel-button"
             onClick={() => {
               props.toggleModal();
               props.productToRemove(props.product);
             }} />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-4 slide-in">
           <img src={image} alt="" className="object-fit-card" />
         </div>
-        <div className="col-md-8 m-auto">
+        <div className="col-md-8 m-auto slide-in">
           <h4 className="text-black-50">{`$${price}`}</h4>
           <p>{description}</p>
           <div className="d-flex">

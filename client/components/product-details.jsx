@@ -6,15 +6,38 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
-      showModal: false
+      showModal: {
+        show: false,
+        displayNone: true
+      }
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
 
   toggleModal() {
-    this.setState({
-      showModal: !this.state.showModal
-    });
+    if (this.state.showModal.show) {
+      this.setState({
+        showModal: {
+          show: false,
+          displayNone: false
+        }
+      });
+      setTimeout(() => {
+        this.setState({
+          showModal: {
+            show: false,
+            displayNone: true
+          }
+        });
+      }, 750);
+    } else {
+      this.setState({
+        showModal: {
+          show: true,
+          displayNone: false
+        }
+      });
+    }
   }
 
   componentDidMount() {
@@ -36,27 +59,27 @@ class ProductDetails extends React.Component {
     return (
       <div className="container py-5">
         <div className="container py-3 bg-white border rounded shadow-sm" id="product-details">
-          <div className="mb-3">
+          <div className="mb-3 slide-in">
             <a href="#" className="mb-3" onClick={() => {
               this.props.setView('catalog', {});
             }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>
           </div>
           <div className="row mb-3">
             <div className="col-md-5">
-              <img src={this.state.product.image} alt="" className="w-100 object-fit-details" />
+              <img src={this.state.product.image} alt={this.state.product.name} className="w-100 object-fit-details slide-in" />
             </div>
             <div className="col-md-7">
-              <h3>{this.state.product.name}</h3>
-              <h4 className="text-black-50">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
-              <p>{this.state.product.shortDescription}</p>
-              <button className="btn text-white primary" onClick={() => {
+              <h3 className="slide-in">{this.state.product.name}</h3>
+              <h4 className="text-black-50 slide-in">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
+              <p className="slide-in">{this.state.product.shortDescription}</p>
+              <button className="btn text-white primary slide-in" onClick={() => {
                 this.props.sendToCart(this.state.product.productId, '+');
                 this.toggleModal();
               }}>Add to Cart</button>
             </div>
           </div>
           <div>
-            <p>{this.state.product.longDescription}</p>
+            <p className="slide-in">{this.state.product.longDescription}</p>
           </div>
         </div>
         <AddModal showModal={this.state.showModal}
