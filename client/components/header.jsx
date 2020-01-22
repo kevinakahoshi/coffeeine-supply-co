@@ -13,7 +13,9 @@ function Header(props) {
     <div className="background-dark py-3 sticky-top header">
       <div className="container">
         <h5 className="text-light d-inline-block m-0 logo" onClick={() => {
-          props.setView('catalog', {});
+          if (props.currentView !== 'catalog') {
+            props.setView('catalog', {});
+          }
         }}>
           <i className="fas fa-mug-hot" /> {name}</h5>
         <p className="text-light d-inline-block float-right m-0 pointer" onClick={() => {
