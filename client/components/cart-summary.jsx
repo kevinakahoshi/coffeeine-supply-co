@@ -6,7 +6,10 @@ class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      showModal: {
+        show: false,
+        displayNone: true
+      },
       productToRemove: null
     };
     this.toggleModal = this.toggleModal.bind(this);
@@ -14,9 +17,29 @@ class CartSummary extends React.Component {
   }
 
   toggleModal() {
-    this.setState({
-      showModal: !this.state.showModal
-    });
+    if (this.state.showModal.show) {
+      this.setState({
+        showModal: {
+          show: false,
+          displayNone: false
+        }
+      });
+      setTimeout(() => {
+        this.setState({
+          showModal: {
+            show: false,
+            displayNone: true
+          }
+        });
+      }, 750);
+    } else {
+      this.setState({
+        showModal: {
+          show: true,
+          displayNone: false
+        }
+      });
+    }
   }
 
   productToRemove(cartItem) {
@@ -48,8 +71,8 @@ class CartSummary extends React.Component {
               this.props.setView('catalog', {});
             }}><i className="fas fa-chevron-circle-left" /> Back to Catalog</a>
           </div>
-          <h1>My Cart</h1>
-          <h3>There are no items in your cart</h3>
+          <h1 className="fade-in slide-in">My Cart</h1>
+          <h3 className="fade-in slide-in">There are no items in your cart</h3>
         </div>
       );
     } else {
@@ -61,15 +84,15 @@ class CartSummary extends React.Component {
             }}>
               <i className="fas fa-chevron-circle-left" /> Back to Catalog</a>
           </div>
-          <h1>My Cart</h1>
+          <h1 className="slide-in">My Cart</h1>
           {products}
           <RemoveModal cartItem={this.state.productToRemove}
             toggleModal={this.toggleModal}
             removeFromCart={this.props.removeFromCart}
             showModal={this.state.showModal}/>
-          <div className="d-md-flex justify-content-between">
-            <h3 className="md-my-auto text-black-50">Item Total: ${itemTotal}</h3>
-            <button className="btn text-white primary my-auto" onClick={() => {
+          <div className="d-md-flex justify-content-between slide-in">
+            <h3 className="md-my-auto text-black-50 slide-in">Item Total: ${itemTotal}</h3>
+            <button className="btn text-white primary my-auto slide-in" onClick={() => {
               this.props.setView('checkout', {});
             }}>Proceed to Checkout</button>
           </div>

@@ -26,16 +26,16 @@ function CheckoutPage(props) {
           props.setView('catalog', {});
         }}><i className="fas fa-chevron-circle-left" /> Continue Shopping</a>
       </div>
-      <h1>My Cart</h1>
-      <h3 className="text-black-50 mb-3">Order Total: ${orderTotal}</h3>
+      <h1 className="slide-in">My Cart</h1>
+      <h3 className="text-black-50 mb-3 slide-in">Order Total: ${orderTotal}</h3>
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-8 slide-in">
           <FormElement placeOrder={props.placeOrder}
             cartOverview={props.cartItems}
             setConfirmation={props.setConfirmation} />
         </div>
         <div className="col-md-4 d-md-block d-none">
-          <div className="border rounded bg-light sticky-top product-column">
+          <div className="border rounded bg-light sticky-top product-column slide-in">
             {cartOverview}
           </div>
         </div>

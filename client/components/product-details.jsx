@@ -6,15 +6,38 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
-      showModal: false
+      showModal: {
+        show: false,
+        displayNone: true
+      }
     };
     this.toggleModal = this.toggleModal.bind(this);
   }
 
   toggleModal() {
-    this.setState({
-      showModal: !this.state.showModal
-    });
+    if (this.state.showModal.show) {
+      this.setState({
+        showModal: {
+          show: false,
+          displayNone: false
+        }
+      });
+      setTimeout(() => {
+        this.setState({
+          showModal: {
+            show: false,
+            displayNone: true
+          }
+        });
+      }, 750);
+    } else {
+      this.setState({
+        showModal: {
+          show: true,
+          displayNone: false
+        }
+      });
+    }
   }
 
   componentDidMount() {
@@ -36,7 +59,7 @@ class ProductDetails extends React.Component {
     return (
       <div className="container py-5">
         <div className="container py-3 bg-white border rounded shadow-sm" id="product-details">
-          <div className="mb-3">
+          <div className="mb-3 slide-in">
             <a href="#" className="mb-3" onClick={() => {
               this.props.setView('catalog', {});
             }}><i className="fas fa-chevron-circle-left"></i> Back to Catalog</a>

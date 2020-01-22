@@ -1,7 +1,6 @@
 import React from 'react';
 import CatalogCarousel from './catalog-carousel';
 import ProductListItem from './product-list-item';
-// import IntroModal from './intro-modal';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class ProductList extends React.Component {
       <>
         <CatalogCarousel />
         <div className="container py-5">
-          <div className="d-flex card-deck">
+          <div className="d-flex card-deck slide-in">
             {
               this.state.products.map(product =>
                 <ProductListItem

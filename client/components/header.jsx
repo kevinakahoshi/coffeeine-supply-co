@@ -17,7 +17,9 @@ function Header(props) {
         }}>
           <i className="fas fa-mug-hot" /> {name}</h5>
         <p className="text-light d-inline-block float-right m-0 pointer" onClick={() => {
-          props.setView('cart', {});
+          if (props.currentView !== 'cart') {
+            props.setView('cart', {});
+          }
         }}>{itemCount} Item{itemCount === 1 ? null : 's'} <i className="fas fa-shopping-cart" />
         </p>
       </div>
