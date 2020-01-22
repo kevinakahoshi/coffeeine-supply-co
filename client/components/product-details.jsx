@@ -43,20 +43,20 @@ class ProductDetails extends React.Component {
           </div>
           <div className="row mb-3">
             <div className="col-md-5">
-              <img src={this.state.product.image} alt="" className="w-100 object-fit-details" />
+              <img src={this.state.product.image} alt={this.state.product.name} className="w-100 object-fit-details slide-in" />
             </div>
             <div className="col-md-7">
-              <h3>{this.state.product.name}</h3>
-              <h4 className="text-black-50">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
-              <p>{this.state.product.shortDescription}</p>
-              <button className="btn text-white primary" onClick={() => {
+              <h3 className="slide-in">{this.state.product.name}</h3>
+              <h4 className="text-black-50 slide-in">{`$${(this.state.product.price / 100).toFixed(2)}`}</h4>
+              <p className="slide-in">{this.state.product.shortDescription}</p>
+              <button className="btn text-white primary slide-in" onClick={() => {
                 this.props.sendToCart(this.state.product.productId, '+');
                 this.toggleModal();
               }}>Add to Cart</button>
             </div>
           </div>
           <div>
-            <p>{this.state.product.longDescription}</p>
+            <p className="slide-in">{this.state.product.longDescription}</p>
           </div>
         </div>
         <AddModal showModal={this.state.showModal}

@@ -10,7 +10,7 @@ function Header(props) {
   }
 
   return (
-    <div className="background-dark py-3 sticky-top">
+    <div className="background-dark py-3 sticky-top header">
       <div className="container">
         <h5 className="text-light d-inline-block m-0 logo" onClick={() => {
           props.setView('catalog', {});

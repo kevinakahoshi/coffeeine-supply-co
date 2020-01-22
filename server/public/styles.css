@@ -20,6 +20,16 @@ body {
   animation-fill-mode: forwards;
 }
 
+.slide-in {
+  animation: slide-in .75s;
+  animation-fill-mode: forwards;
+}
+
+.slide-out {
+  animation: slide-out .75s;
+  animation-fill-mode: forwards;
+}
+
 a {
   transition: .3s all;
   color: #5A4894;
@@ -51,6 +61,7 @@ a:hover {
 .content-div {
   min-height: calc(100vh - 57px);
   background: #fff;
+  animation: fade-in .75s;
 }
 
 .item-card {
@@ -172,4 +183,14 @@ select {
 @keyframes fade-out {
   0% { opacity: 1; }
   100% { opacity: 0; }
+}
+
+@keyframes slide-in {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes slide-out {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(100%); }
 }
