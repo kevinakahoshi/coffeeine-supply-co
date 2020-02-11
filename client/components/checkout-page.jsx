@@ -2,7 +2,6 @@ import React from 'react';
 import FormElement from './form-element';
 
 function CheckoutPage(props) {
-  window.scrollTo(0, 0);
   const orderTotal = props.calculateTotal();
 
   const cartOverview = props.cartItems.map(product => {
