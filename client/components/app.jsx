@@ -35,6 +35,7 @@ export default class App extends React.Component {
 
   setView(name, params) {
     this.setState({ fadeOut: true });
+    window.scrollTo(0, 0);
     setTimeout(() => {
       this.setState({
         fadeOut: false,
